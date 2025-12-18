@@ -22,11 +22,11 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 
 # Не задаём фиксированный порт — Render передаст свой
-EXPOSE 8080
+#EXPOSE 8080
 
 # Порт jn Render (по умолчанию 8080)
-# ENV PORT=8080
-# EXPOSE ${PORT}
+ ENV PORT=8080
+ EXPOSE ${PORT}
 
 # Запуск с динамическим портом
 ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT} -jar app.jar"]
