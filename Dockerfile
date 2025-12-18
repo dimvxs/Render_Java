@@ -21,10 +21,6 @@ WORKDIR /app
 # Копируем готовый JAR
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-# Порт от Render (по умолчанию 8080)
-# ENV PORT=8080
-# EXPOSE ${PORT}
-
 # Не задаём фиксированный порт — Render передаст свой
 EXPOSE 8080  # опционально для документации Docker
 
