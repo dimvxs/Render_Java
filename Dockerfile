@@ -22,8 +22,11 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 
 # Порт от Render (по умолчанию 8080)
-ENV PORT=8080
-EXPOSE ${PORT}
+# ENV PORT=8080
+# EXPOSE ${PORT}
+
+# Не задаём фиксированный порт — Render передаст свой
+EXPOSE 8080  # опционально для документации Docker
 
 # Запуск с динамическим портом
 ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT} -jar app.jar"]
